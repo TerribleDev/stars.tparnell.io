@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Octokit.Repository>
+
+@if(Model.Any())
+{
+    @using(Html.BeginForm("AddStars", "Manage", FormMethod.Get))
+    {
+
+        <div class="jumbotron">
+            <h2>Star your Repos: <button type="submit" class="btn btn-success" value="Star"><span class="octicon octicon-star"></span>Star My Repos</button></h2>
+        </div>
+    }
+
+}
+else
+{
+    <div class="jumbotron">
+        <h2>Congrats! You have stared all your repos</h2>
+    </div>
+
+}

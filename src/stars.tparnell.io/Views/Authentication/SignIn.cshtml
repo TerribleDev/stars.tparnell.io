@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNet.Http.Authentication
+@model IEnumerable<AuthenticationDescription>
+
+<div class="jumbotron">
+    <h1>Autostar your github repos</h1>
+    <p class="lead text-left">Signin to get started</p>
+
+    @foreach(var description in Model)
+    {
+        <form action="/signin" method="post">
+            <input type="hidden" name="Provider" value="@description.AuthenticationScheme" />
+            <input type="hidden" name="ReturnUrl" value="@Url.Action("Index", "Manage")" />
+
+            <button class="btn btn-lg btn-success" type="submit">Connect using @description.DisplayName</button>
+        </form>
+    }
+</div>
