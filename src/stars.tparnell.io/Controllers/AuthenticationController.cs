@@ -33,7 +33,7 @@ namespace stars.tparnell.io.Controllers
             // Instruct the middleware corresponding to the requested external identity
             // provider to redirect the user agent to its own authorization endpoint.
             // Note: the authenticationScheme parameter must match the value configured in Startup.cs
-            return new ChallengeResult(provider, new AuthenticationProperties { RedirectUri = string.IsNullOrWhiteSpace(ReturnUrl) ? "~/Manage" : ReturnUrl });
+            return new ChallengeResult(provider, new AuthenticationProperties { RedirectUri = string.IsNullOrWhiteSpace(ReturnUrl) ? this.Url.Action("Index", "Manage") : ReturnUrl });
         }
 
         [HttpGet("~/signout")]
