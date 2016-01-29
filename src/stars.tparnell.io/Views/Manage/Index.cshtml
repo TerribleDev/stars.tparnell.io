@@ -2,11 +2,11 @@
 
 @if(Model.Any())
 {
-    @using(Html.BeginForm("AddStars", "Manage", FormMethod.Get))
+    @using(Html.BeginForm("AddStars", "Manage", FormMethod.Get, new { id = "formpost" }))
     {
 
         <div class="jumbotron">
-            <h2>Star your Repos: <button type="submit" class="btn btn-success" value="Star"><span class="octicon octicon-star"></span>Star My Repos</button></h2>
+            <h2>Star your Repos: <button type="submit" class="btn btn-success starbutton" value="Star"><span class="octicon octicon-star"></span>Star My Repos</button></h2>
         </div>
     }
 
@@ -17,4 +17,12 @@ else
         <h2>Congrats! You have stared all your repos</h2>
     </div>
 
+}
+@section scripts{
+    <script type="text/javascript">
+        $('#formpost').on('submit', function () {
+
+            $('.btn').prop('disabled', true);
+        })
+    </script>
 }
